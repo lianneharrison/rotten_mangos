@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      redirect_to_movies_path
+      redirect_to movies_path
     else
       render :new
     end
@@ -30,7 +30,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
 
     if @movie.update_attributes(movie_params)
-      redirect_to_movies_path(@movie)
+      redirect_to movies_path(@movie)
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class MoviesController < ApplicationController
   def destroy
     @movie = Movie.find_by(params[:id])
     @movie.destroy
-    redirect_to_movies_path
+    redirect_to movies_path
   end
 
   protected

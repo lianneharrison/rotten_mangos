@@ -15,6 +15,6 @@ Movie.create!(
   they spend their time hanging around and bothering creeps.
   When they meet Seymour who is a social outsider who loves to collect
   old 78 records, Enid's life will change forever",
-  poster_image_url: "https://en.wikipedia.org/wiki/Ghost_World_(film)",
+  poster_image_url: "http://www.gstatic.com/tv/thumb/movieposters/28096/p28096_p_v7_aa.jpg",
   release_date: "2001/07/20"
 )
