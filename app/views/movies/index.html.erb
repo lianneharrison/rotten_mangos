@@ -2,6 +2,20 @@
 <hr>
 <%= link_to "Submit a movie!", new_movie_path %>
 <hr>
+<%= form_tag(movies_path, method: :get) do %>
+  <%= label_tag :title %>
+  <%= text_field_tag :title %>
+<br>
+  <%= label_tag :director %>
+  <%= text_field_tag :director %>
+<br>
+  <%= label_tag :duration %>
+  <%= select_tag :runtime_in_minutes, options_for_select(@movie_duration_options) %>
+<br>
+
+  <%= submit_tag "search" %>
+<% end %>
+<hr>
 <% @movies.each do |movie| %>
   <%= image_tag movie.image_url(:thumb).to_s %>
   <h2><%= link_to movie.title, movie_path(movie) %></h2>

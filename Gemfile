@@ -50,3 +50,7 @@ gem 'carrierwave'
 
 gem 'kaminari'
 
+group :development, :test do |variable|
+  gem 'byebug'
+end
+
