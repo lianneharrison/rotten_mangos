@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-    def is_admin?
+    def admin?
       if current_user.is_admin == true
         true
       else
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     end
 
     def authorised
-      unless is_admin?
+      unless admin?
         flash[:error] = "Unauthorised Access!"
         redirect_to movies_path
         false

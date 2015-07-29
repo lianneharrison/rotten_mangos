@@ -11,6 +11,26 @@ class Movie < ActiveRecord::Base
   validates :release_date, presence: true
   validate  :release_date_is_in_the_future
 
+  
+  def self.by_title(title)
+    where("title like ?", "%#{title}%")
+  end
+
+
+  def self.by_director(director)
+    where("director like ?", "%#{director}%")
+  end 
+
+  def self.by_length(movie_duration)
+    if movie_duration == "Under 90 minutes"
+      where("runtime_in_minutes < 90", "%#{movie_duration}%")
+    elsif movie_duration == "Between 90 and 120 minutes"
+      where("runtime_in_minutes >= 90 AND runtime_in_minutes <= 120", "%#{movie_duration}%")
+    else
+      where("runtime_in_minutes > 120", "%#{movie_duration}%")
+    end
+  end
+
   def review_average
     unless reviews.empty?
       reviews.sum(:rating_out_of_ten)/reviews.size
