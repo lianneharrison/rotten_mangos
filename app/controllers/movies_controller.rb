@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
       elsif params[:runtime_in_minutes] == "Between 90 and 120 minutes"
         @movies = @movies.where("runtime_in_minutes >= 90 AND runtime_in_minutes <= 120", "%#{params[:runtime_in_minutes]}%")
       else
-        @movies = @movies.where("runtime_in_minutes < 120", "%#{params[:runtime_in_minutes]}%")
+        @movies = @movies.where("runtime_in_minutes > 120", "%#{params[:runtime_in_minutes]}%")
       end
 
     end
