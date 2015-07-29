@@ -8,6 +8,10 @@
 <br>
   <%= label_tag :director %>
   <%= text_field_tag :director %>
+<br>
+  <%= label_tag :duration %>
+  <%= select_tag :runtime_in_minutes, options_for_select(@movie_duration_options) %>
+<br>
 
   <%= submit_tag "search" %>
 <% end %>

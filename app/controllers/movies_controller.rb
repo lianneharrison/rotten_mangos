@@ -1,10 +1,19 @@
 class MoviesController < ApplicationController
 
   def index
+    @movie_duration_options = [["Under 90 minutes", "Under 90 minutes"], ["Between 90 and 120 minutes", "Between 90 and 120 minutes"], ["Over 120 minutes", "Over 120 minutes"]]
     @movies = Movie.all
-    if params.has_key?(:title) || params.has_key?(:director)
+    if params.has_key?(:title) || params.has_key?(:director) || params.has_key?(:runtime_in_minutes)
       @movies = @movies.where("title like ?", "%#{params[:title]}%")
       @movies = @movies.where("director like ?", "%#{params[:director]}%")
+
+      if params[:runtime_in_minutes] == "Under 90 minutes"
+        @movies = @movies.where("runtime_in_minutes < 90", "%#{params[:runtime_in_minutes]}%")
+      elsif params[:runtime_in_minutes] == "Between 90 and 120 minutes"
+        @movies = @movies.where("runtime_in_minutes >= 90 AND runtime_in_minutes <= 120", "%#{params[:runtime_in_minutes]}%")
+      else
+        @movies = @movies.where("runtime_in_minutes < 120", "%#{params[:runtime_in_minutes]}%")
+      end
 
     end
   end
