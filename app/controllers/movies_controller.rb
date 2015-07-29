@@ -2,6 +2,9 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+    if params.has_key?(:title)
+      @movies = @movies.where("title like ?", "%#{params[:title]}%")
+    end
   end
 
   def show

@@ -45,3 +45,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'kaminari'
+
+group :development, :test do |variable|
+  gem 'byebug'
+end

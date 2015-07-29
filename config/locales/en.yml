@@ -22,6 +22,6 @@
 en:
   hello: "Hello world"
   views:
-      pagination:
+      pagination:``
         previous: "&lt; Previous"
         next: "Next &gt;"

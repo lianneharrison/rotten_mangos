@@ -2,6 +2,13 @@
 <hr>
 <%= link_to "Submit a movie!", new_movie_path %>
 <hr>
+<%= form_tag(movies_path, method: :get) do %>
+  <%= label_tag :title %>
+  <%= text_field_tag :title %>
+  <%= submit_tag "search" %>
+
+<% end %>
+<hr>
 <% @movies.each do |movie| %>
   <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
   <h2><%= link_to movie.title, movie_path(movie) %></h2>
