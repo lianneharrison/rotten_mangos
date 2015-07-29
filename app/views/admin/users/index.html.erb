@@ -1,5 +1,6 @@
 <h1>List of all users</h1>
 
+
 <%= paginate @users %>
 
 <% @users.each do |user| %>
@@ -8,7 +9,9 @@
     <tr>
       <td><%= user.firstname %></td>
       <td><%= user.lastname %></td>
+      <td><%= link_to "delete", admin_user_path(user), method: :delete, confirm: "You sure?"  %></td>
     </tr>
   </table>
 
 <% end %>
+
