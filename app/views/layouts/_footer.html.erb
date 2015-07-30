@@ -2,8 +2,11 @@
   <small>
     <% if current_user %>
       Signed in as <%= current_user.full_name %> (<%= link_to "Log out", session_path("current"), method: :delete %>)
+      <br>
       <%= link_to "Admin Management", admin_users_path %>
-      <%= link_to "New Admin", admin_users_path %>
+      <br>
+      <%= link_to "New Admin", new_admin_user_path %>
+      <br>
     <% else %>
       <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %>
     <% end %>
