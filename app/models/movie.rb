@@ -12,9 +12,9 @@ class Movie < ActiveRecord::Base
   validate  :release_date_is_in_the_future
 
   
-  scope :by_title, -> (title) { where("title like ?", "%#{title}%") }
-
-  scope :by_director, -> (director) { where("director like ?", "%#{director}%") }
+scope :search, lambda {|search| 
+  where("title LIKE ? or director LIKE ?", "%#{search}%", "%#{search}%")
+}
 
 
   def self.by_length(movie_duration)
