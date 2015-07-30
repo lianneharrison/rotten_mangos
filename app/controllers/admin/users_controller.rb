@@ -22,14 +22,22 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    redirect_to admin_users_path
+
+    respond_to do |format|
+
+      UserMailer.delete_email(@user)
+   
+          format.html { redirect_to(@user, notice: 'User was successfully deleted.') }
+
+      @user.destroy
+      redirect_to admin_users_path
+    end
   end
 
-protected
+  protected
 
-def user_params
-  params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation, :is_admin)
-end
+  def user_params
+    params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation, :is_admin)
+  end
 
 end
