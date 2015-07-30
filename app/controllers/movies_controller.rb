@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
   def index
-    @movie_duration_options = [["All", ""],["Under 90 minutes", "Under 90 minutes"], ["Between 90 and 120 minutes", "Between 90 and 120 minutes"], ["Over 120 minutes", "Over 120 minutes"]]
+    @movie_duration_options = [["All", ""],["Under 90 minutes", "0:90"], ["Between 90 and 120 minutes", "90:120"], ["Over 120 minutes", "120:"]]
     @movies = Movie.all
 
     if params.has_key?(:search) and not params[:search].empty?
@@ -9,7 +9,8 @@ class MoviesController < ApplicationController
     end
 
     if params.has_key?(:runtime_in_minutes) and not params[:runtime_in_minutes].empty?
-      @movies = @movies.by_length(params[:runtime_in_minutes])
+      start_finish = params[:runtime_in_minutes].split(":")
+      @movies = @movies.runtime_in_minutes(start_finish[0], start_finish[1])
     end
   end
 
