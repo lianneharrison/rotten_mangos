@@ -1,20 +1,27 @@
 <h1>Rotten Mangoes</h1>
-<hr>
-<%= link_to "Submit a movie!", new_movie_path %>
-<hr>
-<%= form_tag(movies_path, method: :get) do %>
-  <%= label_tag :search %>
-  <%= text_field_tag :search %>
+  <hr>
+  <%= link_to "Submit a movie!", new_movie_path, class: "waves-effect waves-light btn" %>
+  <hr>
+  <%= form_tag(movies_path, method: :get) do %>
 
-  <%= label_tag :duration %>
-  <%= select_tag :runtime_in_minutes, options_for_select(@movie_duration_options) %>
-<br>
-  <%= submit_tag "search" %>
-<% end %>
+    <div class="row">
+      
+      <div class ="input-field col 6">
 
-<hr>
+      <%= label_tag :search %>
+      <%= text_field_tag :search %>
+      </div>
 
-<% @movies.each do |movie| %>
-  <%= render 'movie', :movie => movie %>
-<% end %>
+      <div class="input-field col s6">
+      <%= select_tag :runtime_in_minutes, options_for_select(@movie_duration_options) %>
+      </div>
 
+      <%= submit_tag "search", class: "waves-effect waves-light btn" %>
+    </div>
+
+  <% end %>
+
+
+  <% @movies.each do |movie| %>
+    <%= render 'movie', :movie => movie %>
+  <% end %>

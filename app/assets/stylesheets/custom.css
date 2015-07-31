@@ -1,0 +1,12 @@
+select {
+  display: block !important; 
+}
+
+input.waves-button-input {
+  background: none !important;
+  border: none !important;
+}
+
+i.waves-effect.waves-light.btn.waves-input-wrapper {
+  margin-top: 1.3em !important;
+}

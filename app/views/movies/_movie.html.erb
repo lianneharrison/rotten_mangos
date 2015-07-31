@@ -1,7 +1,19 @@
-<%= image_tag movie.image_url(:thumb).to_s %>
-<h2><%= link_to movie.title, movie_path(movie) %></h2>
-<small>Average rating: <%= movie.review_average %>/10</small>
-<h3><%= formatted_date(movie.release_date) %></h3>
-<h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-<p><%= movie.description %></p>
-<hr>
+<div class="hoverable">
+
+  <table>
+    <tr>
+      <td><%= image_tag movie.image_url(:thumb).to_s %>
+      <h2><%= link_to movie.title, movie_path(movie) %></h2>
+      </td>
+      <td>
+      <small>Average rating: <%= movie.review_average %>/10</small>
+      <h3><%= formatted_date(movie.release_date) %></h3>
+      <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+      <%= movie.description %>
+      </td>
+    </tr>
+  </table>
+
+</div>
+
+
