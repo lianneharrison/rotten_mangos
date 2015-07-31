@@ -3,8 +3,8 @@
 <head>
   <title>Rotten Mangoes</title>
 
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-  <%= stylesheet_link_tag "/font/roboto" %>
   <%= csrf_meta_tags %>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -18,7 +18,4 @@
   <%= render 'layouts/footer' %>
   </div>
 
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
-</body>
 </html>
